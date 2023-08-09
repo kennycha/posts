@@ -30,3 +30,7 @@
 		<SvelteMarkdown {source} />
 	</div>
 {/if}
+
+<style>
+	/* @TODO 작성해야 함 */
+</style>
