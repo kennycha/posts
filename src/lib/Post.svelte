@@ -1,14 +1,20 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import SvelteMarkdown from 'svelte-markdown';
-	import { page } from '$app/stores';
 	import './markdown.css';
+
+	export let id: string;
 
 	let source: string;
 	let hasError = false;
 
 	onMount(async () => {
-		const res = await fetch(`posts/${$page.params.id}.md`);
+		if (!id) {
+			hasError = true;
+			return;
+		}
+
+		const res = await fetch(`posts/${id}.md`);
 		if (res.status === 404) {
 			hasError = true;
 		} else {
